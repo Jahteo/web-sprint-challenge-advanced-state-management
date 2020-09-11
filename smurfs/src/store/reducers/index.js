@@ -1,7 +1,8 @@
 import {
   FETCH_SMURFS,
   FETCH_SMURFS_ERROR,
-  FETCH_SMURFS_SUCCESS
+  FETCH_SMURFS_SUCCESS,
+  POST_SMURFS_SUCCESS,
 } from "../actions/smurfsActions"
 
 
@@ -11,11 +12,12 @@ const initialState = {
     //   "name": "Test Subject 626",
     //   "age": 2,
     //   "height": "5cm",
-    //   "id": 0
+    //   "id": 626
     // }
   ],
   loadingSmurfs: true,
-  errorMessage: ""
+  errorMessage: "",
+  smurfToInvite: {}
 };
 
 export default (state = initialState, action) => {
@@ -39,9 +41,12 @@ export default (state = initialState, action) => {
           ...state,
           loadingSmurfs: false,
           errorMessage: `${action.payload.status} error: ${action.payload.message}`
-          // Eventual production error message, more useful/entertaining to users:
-          // errorMessage: "Oops, we dropped it water, please try again shortly or leave a message shaming us for ruining was was a previously glorious day. ...oh, I should make a way to contact us..."
         };
+      case POST_SMURFS_SUCCESS:
+        return {
+          ...state,
+          smurfs: action.payload
+        }
     default:
       console.log("Default Switch from Reducer")
       return state;

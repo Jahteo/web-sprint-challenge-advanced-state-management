@@ -1,12 +1,8 @@
 import React, { useState } from "react";
+import { connect } from "react-redux"
+import { pushSmurf } from "../store/actions/smurfsActions"
 
-function AddSmurf () {
-  const [newSmurf, setNewSmurf] = useState({
-    // name: "",
-    // age: null,
-    // height: "",
-    // // id: null
-  })
+function AddSmurf ({ pushSmurf }) {
   const [formInput, setFormInput] = useState({
     name: "",
     age: null,
@@ -22,22 +18,21 @@ function AddSmurf () {
     }
     setFormInput(newFormInput)
   }
-  console.log("FORM INPUT:", formInput)
+  // console.log("FORM INPUT:", formInput)
 
 
-  const handleSubmit = (e) => {
+  const handleSubmitHERE = (e) => {
     e.preventDefault();
-    console.log("we handles a submit, maybe!")
+    console.log("handleSubmitHERE from AddSmurf.js ran")
     // setNewSmurf(...formInput, {id: Math.random()} )
-    setNewSmurf(formInput)
-  };
-  console.log("NEwSMURF", newSmurf)
-
+    pushSmurf(formInput)
+    setFormInput({ name: "", age: null, height: "", id: null})
+  }
 
   return (
     <>
       <h2>Who should we invite to Smurf-topia next?!</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitHERE}>
         Smurf:
           <input type="text" name="name" onChange={handleChange} placeholder="name" /> <br />
         is <input type="text" name="age" onChange={handleChange} placeholder="ex: 74" /> years old<br />
@@ -49,4 +44,4 @@ function AddSmurf () {
   )
 }
 
-export default AddSmurf;
+export default connect(null, { pushSmurf })(AddSmurf);

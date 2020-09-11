@@ -5,16 +5,16 @@ function Smurfs ({smurfs}) {
 
   return (
     <div>
-    <h2>Have you met all the smurfs so far?</h2>
-    {smurfs.map(smurfling => {
-      return (
-        <>
-        <h3>{smurfling.name}</h3>
-      <p>{smurfling.age} years old</p>
-      <p>{smurfling.height} tall</p>
-        </>
-      )
-    })}
+      <h2>Have you met all the smurfs so far?</h2>
+      {smurfs.map(smurfling => {
+        return (
+          <div>
+            <h3>{smurfling.name}</h3>
+            <p>{smurfling.age} years old</p>
+            <p>{smurfling.height} tall</p>
+          </div>
+        )
+      })}
     </div>
   )
 };
