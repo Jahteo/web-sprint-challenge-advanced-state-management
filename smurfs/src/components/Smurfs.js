@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 function Smurfs ({smurfs}) {
 
   return (
-    <>
-    Howdy from Smurfs
+    <div>
+    <h2>Have you met all the smurfs so far?</h2>
     {smurfs.map(smurfling => {
       return (
         <>
@@ -15,7 +15,7 @@ function Smurfs ({smurfs}) {
         </>
       )
     })}
-    </>
+    </div>
   )
 };
 
